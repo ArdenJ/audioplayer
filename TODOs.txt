@@ -1,0 +1,5 @@
+PRIORITIES: 
+  - FIX handle stop - will pause but doesn't reset PlayTime
+
+WANNA DOS: 
+  - Add fast forward / rewind?
