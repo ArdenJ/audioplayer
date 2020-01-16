@@ -12,7 +12,7 @@ export const GlobalStyles = createGlobalStyle`
         overflow-x: hidden;
         align-items: center;
         background: ${({ theme }) => theme.primaryLight};
-        color: ${({ theme }) => theme.primaryDark}
+        color: ${({ theme }) => theme.primaryDark};
         display: flex;
         height: 100vh;
         justify-content: center;

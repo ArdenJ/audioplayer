@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 
 //Components
-import Bar from './Bar/Bar'
 import Button from './Button/Button'
+import Bar from './Bar/Bar'
+import Tooltip from './Tooltip/Tooltip'
+
+//Assets
+import { Info } from './assets/Info'
 
 //StyledComponents
 import { StyledPlayerContainer } from './Player.styled'
@@ -12,34 +17,32 @@ import usePlayer from './usePlayer'
 import useData from './useData'
 import useAvgColor from './useAvgColor'
 
-const Player = ({ trackTitle, source }) => {
-  const {
-    currentPlayTime,
-    duration,
-    playing,
-    setPlaying,
-    setCurrentPlayTime,
-  } = usePlayer()
+const Player = ({ source, image, trackTitle, trackArtist }) => {
+  const { currentPlayTime, duration, playing, setPlaying } = usePlayer(),
+    { rgb } = useAvgColor(source),
+    { id3Data } = useData(source)
+  // const thisSHit = console.log(theData)
 
-  const { rgb, imgUrl } = useAvgColor()
-
-  // get ID3 v2 data from track
-  const { id3Data, rawId3Data } = useData(source)
-  console.log('FROM PLAYER ' + id3Data)
+  console.log(id3Data)
+  const { title, artist, picture } = id3Data
+  // This will need to be extracted
+  // dataArray = new Uint8ClampedArray(data),
+  // width = 'width'
+  console.log(picture)
+  //   imgData = ImageData(dataArray, width)
+  // console.log(imgData)
+  // imageDta - array of RGBa data array
+  // Canvas will draw the shit - imageData is part of Canvas
 
   return (
-    <StyledPlayerContainer rgb={rgb} imgUrl={imgUrl}>
+    <StyledPlayerContainer rgb={rgb} tags={'butts'} image={image}>
       {/* Entry point */}
       <audio id={'PLAYER'} src={source} />
 
       {/* Button */}
       <div className="buttonContainer">
-        <div className="trackImage" hidden>
-          TRACK IMAGE
-        </div>
         <div className="controls">
-          <Button playing={playing} setPlaying={setPlaying} />
-          {/* TODO: Fast-forward and rewind */}
+          <Button playing={playing} setPlaying={setPlaying} image={image} />
         </div>
       </div>
 
@@ -47,12 +50,21 @@ const Player = ({ trackTitle, source }) => {
       <div className="infoContainer">
         <div className="trackInfo">
           {/* TITLE */}
-          <div className="trackTitle">{trackTitle}</div>
+          <div className="trackTitle">
+            {trackTitle || title || `Not loading`}
+          </div>
           {/* ARTIST */}
-          <div className="trackArtist">trackArtist</div>
-          {/* BAR AND TIME */}
+          <div className="trackArtist">{trackArtist || artist || `ughhhh`}</div>
           <div className="bar">
             <Bar currentPlayTime={currentPlayTime} duration={duration} />
+          </div>
+        </div>
+        <div className="moreInfo">
+          {/* Sinful - difine this better */}
+          <Info heightWidth={'1rem'} />
+          <div className="tooltip">
+            {/* RENAME */}
+            <Tooltip trackTitle={trackTitle} trackArtist={trackArtist} />
           </div>
         </div>
       </div>
@@ -61,3 +73,10 @@ const Player = ({ trackTitle, source }) => {
 }
 
 export default Player
+
+Player.propTypes = {
+  source: PropTypes.string.isRequired,
+  image: PropTypes.string,
+  trackTitle: PropTypes.string,
+  trackArtist: PropTypes.string,
+}

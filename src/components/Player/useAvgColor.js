@@ -4,7 +4,7 @@ function useAvgColor() {
   const [rgbR, setRgbR] = useState(0)
   const [rgbG, setRgbG] = useState(0)
   const [rgbB, setRgbB] = useState(0)
-  const [rgb, setRbg] = useState(`rgb(40, 100, 90, 1)`)
+  const [rgb, setRbg] = useState(`rgb(200, 100, 90, 1)`)
   const [defaultRGB, setDefaultRgb] = useState({ r: 255, g: 255, b: 255 })
 
   useEffect(() => {

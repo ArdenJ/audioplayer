@@ -2,27 +2,27 @@ import { useState, useEffect } from 'react'
 import jsmediatags from 'jsmediatags'
 
 function useData(source) {
-  const [id3Data, setId3Data] = useState([])
-  // mm.fetchFromUrl(source).then(res => {
-  //   console.log(res)
-  // })
+  const [id3Data, setId3Data] = useState({ tags: [] })
+
   useEffect(() => {
-    const audio = document.getElementById('PLAYER')
-    const tagList = (() => {
-      jsmediatags.read(source, {
-        onSuccess: function(tag) {
-          return [...tag]
+    const audio = document.getElementById('PLAYER'),
+      targetUrl = source,
+      proxyUrl = 'https://cors-anywhere.herokuapp.com/'
+
+    const tagList = async () => {
+      await jsmediatags.read(proxyUrl + targetUrl, {
+        onSuccess: function(data) {
+          setId3Data(data.tags)
         },
         onError: error => {
-          return `${error.type}, ${error.info}`
+          setId3Data(error)
         },
       })
-    })()
+    }
 
-    const setId3 = () => setId3Data(tagList)
-
+    const setId3 = () => tagList()
     audio.addEventListener('loadeddata', setId3)
-    console.log('TAGLIST: ' + id3Data)
+
     return () => {
       audio.removeEventListener('loadeddata', setId3Data)
     }

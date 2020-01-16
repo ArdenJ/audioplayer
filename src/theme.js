@@ -5,4 +5,5 @@ export const theme = {
   menuHover: '#aaaaaa',
   primaryHover: '#000000',
   mobile: '576px',
+  // themeColor: averageColor,
 }
