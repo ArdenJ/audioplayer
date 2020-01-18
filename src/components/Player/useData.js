@@ -3,6 +3,7 @@ import jsmediatags from 'jsmediatags'
 
 function useData(source) {
   const [id3Data, setId3Data] = useState({ tags: [] })
+  const [pictureData, setPictureData] = useState({ data: [] })
 
   useEffect(() => {
     const audio = document.getElementById('PLAYER'),
@@ -13,6 +14,7 @@ function useData(source) {
       await jsmediatags.read(proxyUrl + targetUrl, {
         onSuccess: function(data) {
           setId3Data(data.tags)
+          setPictureData(data.tags.picture.data)
         },
         onError: error => {
           setId3Data(error)
@@ -30,6 +32,7 @@ function useData(source) {
 
   return {
     id3Data,
+    pictureData,
   }
 }
 
