@@ -4,11 +4,15 @@ export const StyledButton = styled.button`
   position: relative;
   box-sizing: border-box;
   display: inline-block;
-  width: 60px;
-  height: 60px;
+  width: 100%;
+  height: 100%;
 
   border: none;
   background: none;
+
+  padding: 0;
+  margin: 0;
+  align-items: center;
 
   .image {
     position: absolute;
@@ -17,10 +21,29 @@ export const StyledButton = styled.button`
     overflow: hidden;
   }
 
+  img {
+    width: ${({ theme }) => theme.small.player.box};
+    overflow: hidden;
+
+    @media ${({ theme }) => theme.medium.screenWidth} {
+      width: ${({ theme }) => theme.medium.player.box};
+    }
+
+    @media ${({ theme }) => theme.large.screenWidth} {
+      width: ${({ theme }) => theme.large.player.box};
+    }
+  }
+
   .playPause {
-    position: absolute;
+    align-items: center;
+    display: grid;
+    cursor: pointer;
+  }
+
+  .playPause svg {
     z-index: 10;
-    top: 10px;
-    left: 10px;
+    position: relative;
+    margin: auto;
+    padding: auto;
   }
 `

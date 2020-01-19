@@ -10,20 +10,30 @@ import { Pause } from './assets/Pause'
 // Styled components
 import { StyledButton } from './Button.styled'
 
-const Button = ({ playing, setPlaying, source, pictureData, id }) => {
+const Button = ({ playing, setPlaying, pictureData }) => {
   let [play, setPlay] = useState(false)
 
-  console.log(pictureData)
   function handleClick() {
     playing ? setPlaying(false) : setPlaying(true)
     setPlay(!play)
   }
+
+  const boxSize = () => {
+    if (window.innerWidth <= 699) {
+      return '30'
+    } else {
+      return '40'
+    }
+  }
+
   return (
     <StyledButton onClick={handleClick}>
       <div className="image">
-        <Image source={source} id={id} pictureData={pictureData} />
+        <Image pictureData={pictureData} />
       </div>
-      <div className="playPause">{play ? <Pause /> : <Play />}</div>
+      <div className="playPause">
+        {play ? <Pause boxSize={boxSize()} /> : <Play boxSize={boxSize()} />}
+      </div>
     </StyledButton>
   )
 }

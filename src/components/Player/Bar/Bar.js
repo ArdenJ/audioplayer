@@ -27,7 +27,7 @@ function Bar(props) {
       <span
         className="percentageBar"
         style={{
-          background: `linear-gradient(to right, orange ${timePercentage}%, white 0)`,
+          background: `linear-gradient(to right, #000 ${timePercentage}%, #ddd 0)`,
         }}
       />
     </StyledBar>

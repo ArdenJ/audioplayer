@@ -31,25 +31,13 @@ function useData({ source, id }) {
         })
     }
 
-    // const tagList = (async () => {
-    //   await jsmediatags.read(proxyUrl + targetUrl, {
-    // onSuccess: function(data) {
-    //   setId3Data(data.tags)
-    //   setPictureData(data.tags.picture.data)
-    // },
-    // onError: error => {
-    //   setId3Data(error)
-    // },
-    //   })
-    // })() // the eventlistener on loaded was better... maybe getting element was better option?
-
     const setId3 = () => tagList()
     id.current.addEventListener('loadeddata', setId3)
 
     return () => {
       id.current.removeEventListener('loadeddata', setId3Data)
     }
-  })
+  }, [source, id])
 
   return {
     id3Data,

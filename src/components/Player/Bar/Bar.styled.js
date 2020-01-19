@@ -15,14 +15,22 @@ export const StyledBar = styled.div`
     max-width: auto;
     padding: 0.125rem 0;
     margin: 0;
-    font-size: 0.6rem;
+    font-size: 0.5rem;
     font-family: monospace;
     color: #222;
+
+    @media ${({ theme }) => theme.medium.screenWidth} {
+      font-size: 0.6rem;
+    }
+
+    @media ${({ theme }) => theme.large.screenWidth} {
+      font-size: 0.6rem;
+    }
   }
 
   .percentageBar {
     box-sizing: border-box;
-    height: 0.4rem;
-    margin: auto 1rem auto 0.4rem;
+    height: 0.2rem;
+    margin: auto 0.6rem auto 0.45rem;
   }
 `

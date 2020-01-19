@@ -2,8 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Player from './components/Player/Player'
 
-import './styles.css'
-
 function App() {
   return (
     <div className="App">
