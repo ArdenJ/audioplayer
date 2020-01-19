@@ -1,11 +1,10 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 
 //Components
 import Button from './Button/Button'
 import Bar from './Bar/Bar'
 import Tooltip from './Tooltip/Tooltip'
-import { Image } from './Image'
 
 //Assets
 import { Info } from './assets/Info'
@@ -16,45 +15,43 @@ import { StyledPlayerContainer } from './Player.styled'
 // Hooks
 import usePlayer from './usePlayer'
 import useData from './useData'
-import useAvgColor from './useAvgColor'
 
-const Player = ({ source, image, trackTitle, trackArtist }) => {
-  const { currentPlayTime, duration, playing, setPlaying } = usePlayer(),
-    // { rgb } = useAvgColor(source),
-    { id3Data, pictureData } = useData(source)
-  // const thisSHit = console.log(theData)
+const Player = ({ source, trackTitle, trackArtist }) => {
+  const n = Math.round(Math.random() * 100000000)
+  const hex = n.toString(16)
+  const id = useRef(hex)
 
-  console.log(id3Data)
+  const { currentPlayTime, duration, playing, setPlaying } = usePlayer(id)
+  const { id3Data, pictureData } = useData({ source, id })
   const { title, artist } = id3Data
-
-  //   imgData = ImageData(dataArray, width)
-  // console.log(imgData)
-  // imageDta - array of RGBa data array
-  // Canvas will draw the shit - imageData is part of Canvas
 
   return (
     <>
-      <StyledPlayerContainer image={image}>
-        {/* Entry point */}
-        <audio id={'PLAYER'} src={source} />
+      <StyledPlayerContainer>
+        {/* An HTML audio component is rendered in the DOM */}
+        <audio ref={id} src={source} />
 
-        {/* Button */}
+        {/* Button component is passed the PLay/Pause state of the 
+        audio and ArrayBuffer embedded in the audio file */}
         <div className="buttonContainer">
           <div className="controls">
-            <Button playing={playing} setPlaying={setPlaying} image={image} />
+            <Button
+              playing={playing}
+              setPlaying={setPlaying}
+              pictureData={pictureData}
+            />
           </div>
         </div>
 
-        {/* Info */}
+        {/* Info container displays contains user defined or embedded data about audio file */}
         <div className="infoContainer">
           <div className="trackInfo">
-            {/* TITLE */}
-            <div className="trackTitle">
-              {trackTitle || title || `Not loading`}
-            </div>
-            {/* ARTIST */}
+            {/* Track Title in varying orders of spcificity => named by user as 
+            props on Player component => ID3 embedded data => 'unknown' */}
+            <div className="trackTitle">{trackTitle || title || 'Unknown'}</div>
+            {/* Artist Name ibid. */}
             <div className="trackArtist">
-              {trackArtist || artist || `ughhhh`}
+              {trackArtist || artist || 'Unknown'}
             </div>
             <div className="bar">
               <Bar currentPlayTime={currentPlayTime} duration={duration} />
@@ -62,15 +59,16 @@ const Player = ({ source, image, trackTitle, trackArtist }) => {
           </div>
           <div className="moreInfo">
             {/* Sinful - difine this better */}
+            {/* Info component opens up a modal in which further data about the viewed */}
             <Info heightWidth={'1rem'} />
             <div className="tooltip">
-              {/* RENAME */}
+              {/* A second button that opens up a modal containing information 
+              about the audio when clicked */}
               <Tooltip trackTitle={trackTitle} trackArtist={trackArtist} />
             </div>
           </div>
         </div>
       </StyledPlayerContainer>
-      <Image source={source} />
     </>
   )
 }

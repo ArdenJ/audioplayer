@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const playerHeight = '60px'
-// playejr widthh = 420
+// player widthh = 420
 
 export const StyledPlayerContainer = styled.div`
   display: grid;
@@ -14,7 +14,9 @@ export const StyledPlayerContainer = styled.div`
   height: ${playerHeight};
   width: 420px;
   font-family: monospace;
-  background-color: transparent;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 0px 0px 2px rgb(0, 0, 0, 0.4);
   cursor: default;
 
   &:hover {
@@ -26,17 +28,12 @@ export const StyledPlayerContainer = styled.div`
     grid-area: buttonArea;
     width: ${playerHeight};
     height: ${playerHeight};
-    background-color: ${props => props.rgb};
-    background-image: url(${props => props.image});
-    border-radius: 8px;
+    background-color: #222222;
+    border-radius: 8px 0px 0px 8px;
   }
 
   .controls svg {
     cursor: pointer;
-    /* SVG ONCLICK TRANSITION  */
-    &:active {
-      transition-duration: 0.5s;
-    }
   }
 
   .infoContainer {
