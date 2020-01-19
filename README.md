@@ -20,9 +20,10 @@ Only the source prop is required to start using the component. The additional tr
 
 ```js
 <Player 
-source={URL OR PATH TO AUDIO FILE} // required
-trackTitle={STRING DESCRIBING THE TRACK TITLE} // optional
-trackArtist={STRING DESCRIBING THE ARTIST} // optional
+  source={URL OR PATH TO AUDIO FILE} // required
+  trackTitle={STRING DESCRIBING THE TRACK TITLE} // optional
+  trackArtist={STRING DESCRIBING THE ARTIST} // optional
+/>
 ```
 
 If there is no embedded data in the audio file and the user has not passed in the title and artist as props, then the component will fall back to 'Unknown' in each case.  
@@ -37,6 +38,5 @@ If there is no embedded data in the audio file and the user has not passed in th
 
 Claps to the following examples/articles who variously inspired this project or helped solve an issue I faced while creating it: 
 
-* 
-* 
-* 
+* [Nachoperassi](https://codesandbox.io/s/5wwj02qy7k) made a cool audio player that has a great progress bar!
+* [Koteswar Rao](https://medium.com/@koteswar.meesala/convert-array-buffer-to-base64-string-to-display-images-in-angular-7-4c443db242cd) wrote a great Medium article about converting an array buffer to a base64 string 
