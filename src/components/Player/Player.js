@@ -3,9 +3,7 @@ import PropTypes from 'prop-types'
 import { ThemeProvider } from 'styled-components'
 
 //Components
-import Button from './Button/Button'
-import Bar from './Bar/Bar'
-import Tooltip from './Tooltip/Tooltip'
+import { Button, Bar, Tooltip } from './index'
 
 //Assets
 import { Info } from './assets/Info'

@@ -6,9 +6,6 @@
   "main": "src/index.js",
   "dependencies": {
     "jsmediatags": "3.9.3",
-    "moment": "2.24.0",
-    "moment-duration-format": "2.3.2",
-    "music-metadata-browser": "1.0.0",
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "react-scripts": "3.0.1",

@@ -57,7 +57,7 @@ export const StyledPlayerContainer = styled.div`
     grid-template-areas:
       'titles moreInfo'
       'bar moreInfo';
-    grid-template-rows: 50% 50%;
+    grid-template-rows: 64% 36%;
     grid-template-columns: auto 30px;
     max-width: 360px;
     padding: 0 0 0 0.4rem;

@@ -16,9 +16,5 @@ export const Image = props => {
     console.log('loading...')
   }
 
-  return src.length === 0 ? (
-    <></>
-  ) : (
-    <img src={src[0]} alt="Track Image" style={{ maxWidth: '60px' }} />
-  )
+  return src.length === 0 ? <></> : <img src={src[0]} alt="Track Image" />
 }
