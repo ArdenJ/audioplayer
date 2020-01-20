@@ -7,7 +7,6 @@ function App() {
     <div className="App">
       <Player
         source={'https://www.dropbox.com/s/1clbck0v539oldp/screams.mp3?raw=1'}
-        id="PLAYER"
       />
     </div>
   )
