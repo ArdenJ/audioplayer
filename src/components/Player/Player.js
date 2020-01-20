@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { ThemeProvider } from 'styled-components'
 
 //Components
-import { Button, Bar, Tooltip } from './index'
+import { Button, Bar, Tooltip, Modal } from './index'
 
 //Assets
 import { Info } from './assets/Info'
@@ -16,6 +16,7 @@ import { StyledPlayerContainer } from './Player.styled'
 // Hooks
 import usePlayer from './usePlayer'
 import useData from './useData'
+import useModal from './Modal/useModal'
 
 const Player = ({ source, trackTitle, trackArtist }) => {
   // Define a ref to be used for the component
@@ -26,6 +27,7 @@ const Player = ({ source, trackTitle, trackArtist }) => {
   // Hooks
   const { currentPlayTime, duration, playing, setPlaying } = usePlayer(id)
   const { id3Data, pictureData } = useData({ source, id })
+  const { isShowing, toggle } = useModal()
 
   // Destructure properties to be displayed from tag data
   const { title, artist } = id3Data
@@ -64,15 +66,13 @@ const Player = ({ source, trackTitle, trackArtist }) => {
           <div className="moreInfo">
             {/* Sinful - define this better */}
             {/* Info component opens up a modal in which further data about the viewed */}
-            <Info heightWidth={'1rem'} />
-            <div className="tooltip">
-              {/* A second button that opens up a modal containing information 
-              about the audio when clicked */}
-              <Tooltip trackTitle={trackTitle} trackArtist={trackArtist} />
-            </div>
+            <button onClick={toggle}>
+              <Info heightWidth={'1rem'} />
+            </button>
           </div>
         </div>
       </StyledPlayerContainer>
+      <Modal isShowing={isShowing} hide={toggle} />
     </ThemeProvider>
   )
 }
