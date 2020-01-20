@@ -96,12 +96,12 @@ export const StyledPlayerContainer = styled.div`
     grid-area: moreInfo;
     display: grid;
     width: 30px;
-
-    &:hover .tooltip {
-      visibility: visible;
-      opacity: 1;
-      transition-delay: 0.8s;
     }
+  }
+
+  .moreInfo button {
+    background: transparent;
+    border: none;
   }
 
   .moreInfo svg {

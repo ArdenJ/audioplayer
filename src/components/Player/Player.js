@@ -72,7 +72,13 @@ const Player = ({ source, trackTitle, trackArtist }) => {
           </div>
         </div>
       </StyledPlayerContainer>
-      <Modal isShowing={isShowing} hide={toggle} />
+      <Modal
+        isShowing={isShowing}
+        hide={toggle}
+        pictureData={pictureData}
+        title={title}
+        artist={artist}
+      />
     </ThemeProvider>
   )
 }
