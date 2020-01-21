@@ -12,7 +12,7 @@ npm i
 npm start
 ```
 
-A live demo of the project can be viewed on Codesanbox [here](https://codesandbox.io/s/github/ArdenJ/audioplayer).
+A live demo of the project can be viewed on Codesandbox [here](https://codesandbox.io/s/github/ArdenJ/audioplayer).
 
 ## Using this project as a component
 
@@ -21,7 +21,7 @@ Only the source prop is required to start using the component. The additional tr
 ```js
 <Player
   source={URL OR PATH TO AUDIO FILE} // required
-  text={USER DEFINED TEXT (E.G. LYRICS OR TRANSCRIPT)}
+  text={USER DEFINED TEXT (E.G. LYRICS OR TRANSCRIPT)} // optional
   trackTitle={STRING DESCRIBING THE TRACK TITLE} // optional
   trackArtist={STRING DESCRIBING THE ARTIST} // optional
 />
