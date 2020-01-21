@@ -12,7 +12,7 @@ npm i
 npm start
 ```
 
-A live demo of the project can be viewed on Codesandbox [here](https://codesandbox.io/s/github/ArdenJ/audioplayer).
+A live demo of the project can be viewed on Codesandbox [here](https://w9c0x.csb.app/).
 
 ## Using this project as a component
 
