@@ -1,9 +1,11 @@
 import React from 'react'
 
-export default function ModalHeader(props) {
+import { StyledModalHeader } from '../Modal.styled'
+
+export default function ModalHeader({ title }) {
   return (
-    <div>
-      <h1>{props.title}</h1>
-    </div>
+    <StyledModalHeader>
+      <h1>{title}</h1>
+    </StyledModalHeader>
   )
 }

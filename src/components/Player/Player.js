@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { ThemeProvider } from 'styled-components'
 
 //Components
-import { Button, Bar, Tooltip, Modal } from './index'
+import { Button, Bar, Modal } from './index'
 
 //Assets
 import { Info } from './assets/Info'
@@ -18,7 +18,7 @@ import usePlayer from './usePlayer'
 import useData from './useData'
 import useModal from './Modal/useModal'
 
-const Player = ({ source, trackTitle, trackArtist }) => {
+const Player = ({ text, source, trackTitle, trackArtist }) => {
   // Define a ref to be used for the component
   const n = Math.round(Math.random() * 100000000)
   const hex = n.toString(16)
@@ -73,6 +73,7 @@ const Player = ({ source, trackTitle, trackArtist }) => {
         </div>
       </StyledPlayerContainer>
       <Modal
+        text={text}
         isShowing={isShowing}
         hide={toggle}
         pictureData={pictureData}
@@ -90,4 +91,5 @@ Player.propTypes = {
   image: PropTypes.string,
   trackTitle: PropTypes.string,
   trackArtist: PropTypes.string,
+  text: PropTypes.string,
 }

@@ -87,16 +87,19 @@ export const StyledModal = styled.div`
     text-transform: uppercase;
     display: grid;
     grid-template-areas: 'title button';
-    grid-template-columns: 'auto 2rem';
+    grid-template-columns: auto 3rem;
   }
 
   .button {
     display: grid;
     grid-area: button;
+    width: 3rem;
   }
 
   .button button {
     margin: auto;
+    height: 3rem;
+    width: 3rem;
     background-color: transparent;
     border: 2.5px solid white;
     border-radius: 50%;
@@ -105,11 +108,39 @@ export const StyledModal = styled.div`
   }
 `
 
-export const StyledModalHeader = styled.div``
+export const StyledModalHeader = styled.div`
+  grid-area: title;
+  line-height: 3rem;
+  vertical-align: middle;
+`
 
 export const StyledModalBody = styled.div`
   border-top: 2.5px solid rgb(255, 255, 255, 0.5);
   margin-top: 0.6rem;
-  padding: 0.6rem;
+  padding: 0.6rem 0;
+  display: grid;
+  grid-template-areas:
+    'picture info'
+    'body body';
+  grid-template-columns: 30% 70%;
+
+  .image {
+    grid-area: picture;
+  }
+
+  .image img {
+    width: 100%;
+  }
+
+  .info {
+    grid-area: info;
+    padding: 1rem;
+  }
+
+  .body {
+    grid-area: body;
+    text-align: left;
+    padding-top: 1rem;
+  }
 `
 export const StyledModalFooter = styled.div``

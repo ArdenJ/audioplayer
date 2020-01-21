@@ -4,14 +4,20 @@ import ReactDOM from 'react-dom'
 // Components
 import ModalHeader from './childComponents/ModalHeader'
 import ModalBody from './childComponents/ModalBody'
-import ModalFooter from './childComponents/ModalFooter'
 
 import { Image } from '../Image'
 
 //Styled Components
 import { StyledModal } from './Modal.styled'
 
-const ModalComponent = ({ isShowing, hide, pictureData, title, artist }) => {
+const ModalComponent = ({
+  text,
+  isShowing,
+  hide,
+  pictureData,
+  title,
+  artist,
+}) => {
   return (
     <React.Fragment>
       <StyledModal>
@@ -21,7 +27,7 @@ const ModalComponent = ({ isShowing, hide, pictureData, title, artist }) => {
             <Image pictureData={pictureData} />
             <div className="container">
               <div className="modalHeader">
-                <ModalHeader title="h11o" />
+                <ModalHeader title={title} />
                 <div className="button">
                   <button type="button" onClick={hide}>
                     <span>&times;</span>
@@ -29,10 +35,12 @@ const ModalComponent = ({ isShowing, hide, pictureData, title, artist }) => {
                 </div>
               </div>
               <div className="modalBody">
-                <ModalBody />
-              </div>
-              <div className="modalFooter">
-                <ModalFooter />
+                <ModalBody
+                  title={title}
+                  artist={artist}
+                  pictureData={pictureData}
+                  text={text}
+                />
               </div>
             </div>
           </div>
@@ -42,10 +50,11 @@ const ModalComponent = ({ isShowing, hide, pictureData, title, artist }) => {
   )
 }
 
-const Modal = ({ isShowing, hide, pictureData, title, artist }) =>
+const Modal = ({ text, isShowing, hide, pictureData, title, artist }) =>
   isShowing
     ? ReactDOM.createPortal(
         <ModalComponent
+          text={text}
           isShowing={isShowing}
           hide={hide}
           pictureData={pictureData}
