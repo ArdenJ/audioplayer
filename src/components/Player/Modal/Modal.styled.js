@@ -115,10 +115,10 @@ export const StyledModalHeader = styled.div`
 `
 
 export const StyledModalBody = styled.div`
-  border-top: 2.5px solid rgb(255, 255, 255, 0.5);
   margin-top: 0.6rem;
   padding: 0.6rem 0;
   display: grid;
+  width: 80%;
   grid-template-areas:
     'picture info'
     'body body';

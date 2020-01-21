@@ -11,7 +11,7 @@ function ModalBody(props) {
   }
 
   const Text = () => {
-    return text !== undefined ? <pre>{text}</pre> : <></>
+    return text !== undefined ? <p>{text}</p> : <></>
   }
 
   return (

@@ -15,6 +15,6 @@ export const Image = props => {
   } else {
     console.log('loading...')
   }
-
-  return src.length === 0 ? <></> : <img src={src[0]} alt="Track Image" />
+  // TODO: define alt text from image/tag data
+  return src.length === 0 ? <></> : <img src={src[0]} alt="alt text" />
 }
