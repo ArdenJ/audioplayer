@@ -32,11 +32,14 @@ If there is no embedded data in the audio file and the user has not passed in th
 ## To Dos
 
 - Improve flexibility of data
-- Implement context (there is some prop-drilling)
+- Improve component composition to avoid prop drilling
+- move CSS to Emotion (styled-components is too weighty)
 - Make component more accessible (generate alt text for images)
 - Add loading states
 - Improve load time to read ID3 data
-- improve UX (e.g. click away to close info modal)
+  - This isn't an issue with smaller individual instances but load time quickly adds to
+- Make the modal a drawer  
+- Add a click-to-navigate on progress bar!
 
 ## Built With
 
